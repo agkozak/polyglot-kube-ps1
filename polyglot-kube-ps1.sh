@@ -23,11 +23,10 @@ if [[ -n $ZSH_VERSION ]]; then
 
 elif [[ -n $BASH_VERSION ]]; then
 
+  # TODO: Fix for efficiency and monochrome
   _polyglot_kube_ps1_prompt_command() {
-    if _polyglot_has_colors; then
+    if [[ -n $(kube_ps1) ]]; then
       PS1='\033[1m\]$(kube_ps1)\[\033[0m\]\n'$PS1
-    else
-      PS1='$(kube_ps1)'$PS1
     fi
   }
 
