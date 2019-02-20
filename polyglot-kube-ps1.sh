@@ -11,11 +11,7 @@ if [[ -n $ZSH_VERSION ]]; then
   _polyglot_kube_ps1_precmd() {
     local kube_ps1=$(kube_ps1)
     if [[ -n $kube_ps1 ]]; then
-      if _polyglot_has_colors; then
-        print -P "%B$kube_ps1%b"
-      else
-        print "$kube_ps1"
-      fi
+      print -P "%B$kube_ps1%b"
     fi
   }
 
@@ -23,16 +19,14 @@ if [[ -n $ZSH_VERSION ]]; then
 
 elif [[ -n $BASH_VERSION ]]; then
 
-  # TODO: Fix for efficiency and monochrome
   _polyglot_kube_ps1_prompt_command() {
-    if [[ -n $(kube_ps1) ]]; then
-      PS1='\[\033[1m\]$(kube_ps1)\[\033[0m\]\n'$PS1
-    fi
+    _kube_ps1_update_cache
+    PS1="\[\033[1m\]$(kube_ps1)\[\033[0m\]\n$PS1"
   }
 
   if [[ $PROMPT_COMMAND != *_polyglot_kube_ps1_prompt_command* ]]; then
-    PROMPT_COMMAND+='_polyglot_kube_ps1_prompt_command'
+    PROMPT_COMMAND="${PROMPT_COMMAND//_kube_ps1_update_cache\;/}"
+    PROMPT_COMMAND+='; _polyglot_kube_ps1_prompt_command'
   fi
 
 fi
-
