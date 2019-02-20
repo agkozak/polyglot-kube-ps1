@@ -2,9 +2,9 @@
 
 If you use the [Polyglot Prompt](https://github.com/agkozak/polyglot) with `bash` or `zsh` and would like to have a Kubernetes indicator in your prompt, you can do so by using the [kube/ps1](https://github.com/jonmosco/kube-ps1) with polyglot-kube-ps1. Just clone the following repositories:
 
-  agkozak/polyglot
-  jonmosco/kube-ps1
-  agkozak/polyglot-kube-ps1
+    agkozak/polyglot
+    jonmosco/kube-ps1
+    agkozak/polyglot-kube-ps1
 
 and source them:
 
