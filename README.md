@@ -1,4 +1,4 @@
-# polyglot-kube-ps1: [kube-ps1](https://github.com/jonmosco/kube-ps1) integration for the [Polyglot Prompt](https://github.com/agkozak/polyglot)
+# polyglot-kube-ps1: Kubernetes integration for the [Polyglot Prompt](https://github.com/agkozak/polyglot)
 
 If you use the [Polyglot Prompt](https://github.com/agkozak/polyglot) with `bash` or `zsh` and would like to have a Kubernetes indicator in your prompt, you can do so by using the [kube/ps1](https://github.com/jonmosco/kube-ps1) with polyglot-kube-ps1. Just clone the following repositories:
 
