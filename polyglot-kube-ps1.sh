@@ -1,13 +1,12 @@
+# Check to make sure that kube-ps1 has been loaded
+if ! type kube_ps1 &> /dev/null; then
+  echo 'polyglot-kube-ps1: Load jonmosco/kube-ps1.' >&2 && return 1
+fi
+
 KUBE_PS1_SYMBOL_ENABLE='false'
 KUBE_PS1_CTX_COLOR='yellow'
 
 if [[ -n $ZSH_VERSION ]]; then
-
-  # In ZSH, kube-ps1 must be sourced first or the Kubernetes prompt info will not
-  # appear in the first prompt displayed.
-  if ! whence -w kube_ps1 &> /dev/null; then
-    print 'polyglot-kube-ps1: Source jonmosco/kube-ps1 first.' >&2
-  fi
 
   _polyglot_kube_ps1_precmd() {
     local kube_ps1=$(kube_ps1)
