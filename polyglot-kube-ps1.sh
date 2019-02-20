@@ -29,6 +29,7 @@ elif [[ -n $BASH_VERSION ]]; then
 
   if [[ $PROMPT_COMMAND != *_polyglot_kube_ps1_prompt_command* ]]; then
     PROMPT_COMMAND="${PROMPT_COMMAND//_kube_ps1_update_cache\;/}"
+    [[ $PROMPT_COMMAND != *\; ]] && PROMPT_COMMAND+=';'
     PROMPT_COMMAND+='_polyglot_kube_ps1_prompt_command'
   fi
 
