@@ -22,13 +22,13 @@ if [[ -n $ZSH_VERSION ]]; then
 elif [[ -n $BASH_VERSION ]]; then
 
   _polyglot_kube_ps1_prompt_command() {
-    _kube_ps1_update_cache
+    _kube_ps1_prompt_update
     local kube_ps1=$(kube_ps1)
     [[ -n $kube_ps1 ]] && PS1="\[\033[1m\]$kube_ps1\[\033[0m\]\n$PS1"
   }
 
   if [[ $PROMPT_COMMAND != *_polyglot_kube_ps1_prompt_command* ]]; then
-    PROMPT_COMMAND="${PROMPT_COMMAND//_kube_ps1_update_cache\;/}"
+    PROMPT_COMMAND="${PROMPT_COMMAND//_kube_ps1_prompt_update\;/}"
     [[ $PROMPT_COMMAND != *\; ]] && PROMPT_COMMAND+=';'
     PROMPT_COMMAND+='_polyglot_kube_ps1_prompt_command'
   fi
